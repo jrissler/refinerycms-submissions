@@ -1,0 +1,99 @@
+<% content_for :body_content_title do %>
+  <%= @submission.first_name %>
+<% end %>
+
+<% content_for :body_content_left do %>
+  <section>
+    <h1>First Name</h1>
+    <p>
+      <%=raw @submission.first_name %>
+    </p>
+  </section>
+  <section>
+    <h1>Last Name</h1>
+    <p>
+      <%=raw @submission.last_name %>
+    </p>
+  </section>
+  <section>
+    <h1>Email</h1>
+    <p>
+      <%=raw @submission.email %>
+    </p>
+  </section>
+  <section>
+    <h1>Phone</h1>
+    <p>
+      <%=raw @submission.phone %>
+    </p>
+  </section>
+  <section>
+    <h1>Message</h1>
+    <p>
+      <%=raw @submission.message %>
+    </p>
+  </section>
+  <section>
+    <h1>Spam</h1>
+    <p>
+      <%=raw @submission.spam %>
+    </p>
+  </section>
+  <section>
+    <h1>Your Interest</h1>
+    <p>
+      <%=raw @submission.your_interest %>
+    </p>
+  </section>
+  <section>
+    <h1>How Did You Find Us</h1>
+    <p>
+      <%=raw @submission.how_did_you_find_us %>
+    </p>
+  </section>
+  <section>
+    <h1>Newsletter</h1>
+    <p>
+      <%=raw @submission.newsletter %>
+    </p>
+  </section>
+  <section>
+    <h1>Method Of Contact</h1>
+    <p>
+      <%=raw @submission.method_of_contact %>
+    </p>
+  </section>
+  <section>
+    <h1>User Ip</h1>
+    <p>
+      <%=raw @submission.user_ip %>
+    </p>
+  </section>
+  <section>
+    <h1>User Agent</h1>
+    <p>
+      <%=raw @submission.user_agent %>
+    </p>
+  </section>
+  <section>
+    <h1>Referrer</h1>
+    <p>
+      <%=raw @submission.referrer %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :body_content_right do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="submissions">
+      <% @submissions.each do |submission| %>
+        <li>
+          <%= link_to submission.first_name, submission_path(submission) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>

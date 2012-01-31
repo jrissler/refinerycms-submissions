@@ -1,0 +1,101 @@
+<%= form_for [:admin, @submission] do |f| -%>
+  <%= render :partial => "/shared/admin/error_messages", :locals => {
+          :object => @submission,
+          :include_object_name => true
+        } %>
+  
+  <div class='field'>
+    <%= f.label :first_name -%>
+    <%= f.text_field :first_name, :class => 'larger widest'  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :last_name -%>
+    <%= f.text_field :last_name  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :email -%>
+    <%= f.text_field :email  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :phone -%>
+    <%= f.text_field :phone  -%>
+  </div>
+  
+  <div class='field'>
+    <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
+      <ul id='page_parts'>
+        <% [:message].each_with_index do |part, part_index| %>
+          <li class='ui-state-default<%= ' ui-state-active' if part_index == 0 %>'>
+            <%= link_to part.to_s.titleize, "##{part}" %>
+          </li>
+        <% end %>
+      </ul>
+
+      <div id='page_part_editors'>
+        <% [:message].each do |part| %>
+          <div class='page_part' id='<%= part %>'>
+            <%= f.text_area part, :rows => 20, :class => 'wymeditor widest' -%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :spam -%>
+    <%= f.check_box :spam, :checked => @submission[:spam]  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :your_interest -%>
+    <%= f.text_field :your_interest  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :how_did_you_find_us -%>
+    <%= f.text_field :how_did_you_find_us  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :newsletter -%>
+    <%= f.check_box :newsletter, :checked => @submission[:newsletter]  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :method_of_contact -%>
+    <%= f.text_field :method_of_contact  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :user_ip -%>
+    <%= f.text_field :user_ip  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :user_agent -%>
+    <%= f.text_field :user_agent  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :referrer -%>
+    <%= f.text_field :referrer  -%>
+  </div>
+  
+  <%= render :partial => "/shared/admin/form_actions",
+              :locals => {
+                :f => f,
+                :continue_editing => false,
+                :delete_title => t('delete', :scope => 'admin.submissions.submission'),
+                :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @submission.first_name)
+              } %>
+<% end -%>
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end %>

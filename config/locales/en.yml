@@ -1,0 +1,25 @@
+en:
+  shared:
+    admin:
+      image_picker:
+        image: image
+  plugins:
+    submissions:
+      title: Submissions
+  admin:
+    submissions:
+      actions:
+        create_new: Add New Submission
+        reorder: Reorder Submissions
+        reorder_done: Done Reordering Submissions
+      records:
+        title: Submissions
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: There are no Submissions yet. Click "Add New Submission" to add your first submission.
+      submission:
+        view_live_html: View this submission live <br/><em>(opens in a new window)</em>
+        edit: Edit this submission
+        delete: Remove this submission forever
+  submissions:
+    show:
+      other: Other Submissions

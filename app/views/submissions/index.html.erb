@@ -1,0 +1,11 @@
+<% content_for :body_content_left do %>
+  <ul id="submissions">
+    <% @submissions.each do |submission| %>
+      <li>
+        <%= link_to submission.first_name, submission_path(submission) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>

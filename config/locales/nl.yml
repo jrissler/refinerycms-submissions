@@ -1,0 +1,21 @@
+nl:
+  plugins:
+    submissions:
+      title: Submissions
+  admin:
+    submissions:
+      actions:
+        create_new: Maak een nieuwe Submission
+        reorder: Wijzig de volgorde van de Submissions
+        reorder_done: Klaar met het wijzingen van de volgorde van de Submissions
+      records:
+        title: Submissions
+        sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+        no_items_yet: Er zijn nog geen Submissions. Druk op 'Maak een nieuwe Submission' om de eerste aan te maken.
+      submission:
+        view_live_html: Bekijk deze submission op de website <br/><em>(opent een nieuw venster)</em>
+        edit: Bewerk deze submission
+        delete: Verwijder deze submission voor eeuwig
+  submissions:
+    show:
+      other: Andere Submissions

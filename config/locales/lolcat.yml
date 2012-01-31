@@ -1,0 +1,25 @@
+lolcat:
+  shared:
+    admin:
+      image_picker:
+        image: IMAGE
+  plugins:
+    submissions:
+      title: Submissions
+  admin:
+    submissions:
+      actions:
+        create_new: CREATE NEW Submission
+        reorder: REORDR Submissions
+        reorder_done: DUN REORDERIN Submissions
+      records:
+        title: Submissions
+        sorry_no_results: SRY! THAR R NO RESULTS FINDZ.
+        no_items_yet: THAR R NO Submissions YET. CLICK "CREATE NEW Submission" 2 ADD UR FURST submission.
+      submission:
+        view_live_html: VIEW DIS submission LIV <BR/><EM>(OPENS IN NEW WINDOW)</EM>
+        edit: EDIT DIS submission
+        delete: REMOOV DIS submission FOREVR
+  submissions:
+    show:
+      other: OTHR Submissions
