@@ -1,13 +1,14 @@
 Gem::Specification.new do |s|
-  s.name              = %q{refinerycms-submissions}
-  s.version           = %q{1.0}
-  s.date              = %q{2012-02-01}
-  s.summary           = %q{Contact submissions gem for Refinery with akismet spam filter and extra contact fields.}
-  s.description       = %q{Contact submission handling functionality extracted from Refinery CMS to allow you to have a contact form and manage submissions in the Refinery backend. Also includes akismet spam filtering}
-  s.homepage          = %q{http://railsbits.com}
-  s.email             = %q{james@railsbits.com}
+  s.name              = "refinerycms-submissions"
+  s.version           = "1.0"
+  s.date              = "2012-02-01"
+  s.summary           = "Contact submissions gem for Refinery with akismet spam filter and extra contact fields."
+  s.description       = "Contact submission handling functionality extracted from Refinery CMS to allow you to have a contact form and manage submissions in the Refinery backend. Also includes akismet spam filtering"
+  s.url               = "http://github.com/jrissler/refinerycms-submissions"
+  s.email             = "james@railsbits.com"
   s.authors           = ["James Rissler"]
   s.require_paths     = %w(lib)
+  s.ignore_pattern    = ["tmp/*", "script/*"]
 
   s.files             = [
     'refinerycms-submissions.gemspec',
