@@ -27,11 +27,11 @@ class Admin::SubmissionsController < Admin::BaseController
 protected
 
   def find_all_ham
-    @submissions = Submission.ham
+    @submissions = Submission.where(:spam => false)
   end
 
   def find_all_spam
-    @submissions = Submission.spam
+    @submissions = Submission.where(:spam => true)
   end
 
   def get_spam_count
