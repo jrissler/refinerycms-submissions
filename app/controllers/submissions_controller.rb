@@ -1,6 +1,4 @@
 class SubmissionsController < ApplicationController
-
-  before_filter :find_all_submissions
   before_filter :find_page, :only => [:create, :new]
   
   def thank_you
