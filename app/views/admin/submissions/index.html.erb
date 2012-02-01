@@ -1,10 +1,30 @@
-<section id='records'>
-  <%= render :partial => 'records' %>
-</section>
-<aside id='actions'>
-  <%= render :partial => 'actions' %>
-</aside>
-<%= render :partial => '/shared/admin/make_sortable',
-            :locals => {
-              :tree => false
-            } if !searching? and Admin::SubmissionsController.sortable? and Submission.count > 1 %>
+<%= render :partial => "submenu" %>
+<div id='records'>
+  <% if searching? %>
+    <h2><%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
+    <% if @submissions.any? %>
+      <%= will_paginate @submissions %>
+      <ul>
+        <%= render :partial => "submission", :collection => @submissions %>
+      </ul>
+      <%= will_paginate @submissions %>
+    <% else %>
+      <p><%= t('shared.admin.search.no_results') %></p>
+    <% end %>
+  <% else %>
+    <% if @submissions.any? -%>
+      <%= will_paginate @submissions %>
+      <% group_by_date(@submissions).each do |container| %>
+        <h3><%= l((submission_group = container.last).first.created_at, :format => :short) %></h3>
+        <ul>
+          <%= render :partial => 'submission', :collection => submission_group %>
+        </ul>
+      <% end %>
+      <%= will_paginate @submissions %>
+    <% else -%>
+      <p>
+        <strong><%= t(".no_#{action_name == 'index' ? 'submissions' : 'spam'}") %></strong>
+      </p>
+    <% end -%>
+  <% end %>
+</div>
