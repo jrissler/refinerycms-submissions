@@ -1,4 +1,4 @@
-require File.expand_path('../inquiries', __FILE__)
+require File.expand_path('../submissions', __FILE__)
 
 module Refinery
   module Submissions

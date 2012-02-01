@@ -1,1 +1,1 @@
-<%=raw InquirySetting.confirmation_message(Globalize.locale).gsub("%name%", @submission.name) %>
+<%=raw Submission.confirmation_message(Globalize.locale).gsub("%name%", @submission.name) %>

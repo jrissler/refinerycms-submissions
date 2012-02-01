@@ -39,7 +39,7 @@ if defined?(::Page)
   })
   thank_you_page.parts.create({
     :title => "Body",
-    :body => "<p>We've received your inquiry and will get back to you with a response shortly.</p><p><a href='/'>Return to the home page</a></p>",
+    :body => "<p>We've received your contact form information and will get back to you with a response shortly.</p><p><a href='/'>Return to the home page</a></p>",
     :position => 0
   })
 

@@ -26,4 +26,4 @@ s.add_dependency('filters_spam', '~> 0.2')
 end
 EOF
 
-File.open(File.expand_path("../../refinerycms-inquiries.gemspec", __FILE__), 'w').puts(gemspec)
+File.open(File.expand_path("../../refinerycms-submissions.gemspec", __FILE__), 'w').puts(gemspec)
