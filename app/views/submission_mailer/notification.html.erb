@@ -1,0 +1,18 @@
+<%=raw t('.greeting') %>,
+
+<%=raw t('.you_recieved_new_submission') %>
+
+<%=raw t('.submission_starts') %>
+
+<%=raw t('.from') %>: <%= @submission.name %>
+<%=raw t('.email') %>: <%= @submission.email %>
+<%=raw t('.phone') %>: <%= @submission.phone %>
+<%=raw t('.message') %>:
+<%=simple_format strip_tags(@submission.message) %>
+
+<%=raw t('.submission_ends') %>
+
+<%=raw t('.closing_line') %>,
+<%=raw RefinerySetting[:site_name] %>
+
+<%=raw t('.ps') %>

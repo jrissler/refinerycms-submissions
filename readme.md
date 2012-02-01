@@ -1,6 +1,6 @@
-# Inquiries
+# Submissions
 
-![Refinery Inquiries](http://refinerycms.com/system/images/BAhbBlsHOgZmSSIqMjAxMS8wNS8wMS8wNF81MF8wMV81MDlfaW5xdWlyaWVzLnBuZwY6BkVU/inquiries.png)
+![Refinery Submissions](http://refinerycms.com/system/images/BAhbBlsHOgZmSSIqMjAxMS8wNS8wMS8wNF81MF8wMV81MDlfaW5xdWlyaWVzLnBuZwY6BkVU/inquiries.png)
 
 ### Gem Installation using Bundler (The very best way)
 
@@ -37,11 +37,11 @@ to-do add content
 
 ## How do I get Notified?
 
-Go into your 'Inquiries' tab in the Refinery admin area and click on "Update who gets notified"
+Go into your 'Submissions' tab in the Refinery admin area and click on "Update who gets notified"
 
 ## How do I Edit the Automatic Confirmation Email
 
-Go into your 'Inquiries' tab in the Refinery admin area and click on "Edit confirmation email"
+Go into your 'Submissions' tab in the Refinery admin area and click on "Edit confirmation email"
 
 ## How do I change the from address from no-reply@com.au to no-reply@[mydomain].com.au
 

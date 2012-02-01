@@ -7,7 +7,7 @@ class CreateSubmissions < ActiveRecord::Migration
       t.string :email
       t.string :phone
       t.text :message
-      t.boolean :spam
+      t.boolean :spam, :default => false
       t.string :your_interest
       t.string :how_did_you_find_us
       t.boolean :newsletter
@@ -32,6 +32,10 @@ class CreateSubmissions < ActiveRecord::Migration
 
     if defined?(Page)
       Page.delete_all({:link_url => "/submissions"})
+    end
+    
+    if defined?(Page)
+      Page.delete_all({:link_url => ("/contact" || "/contact/thank_you")})
     end
 
     drop_table :submissions

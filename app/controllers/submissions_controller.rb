@@ -1,30 +1,47 @@
 class SubmissionsController < ApplicationController
 
   before_filter :find_all_submissions
-  before_filter :find_page
-
-  def index
-    # you can use meta fields from your model instead (e.g. browser_title)
-    # by swapping @page for @submission in the line below:
-    present(@page)
+  before_filter :find_page, :only => [:create, :new]
+  
+  def thank_you
+    @page = Page.find_by_link_url("/contact/thank_you", :include => [:parts, :slugs])
   end
 
-  def show
-    @submission = Submission.find(params[:id])
+  def new
+    @submission = Submission.new
+  end
 
-    # you can use meta fields from your model instead (e.g. browser_title)
-    # by swapping @page for @submission in the line below:
-    present(@page)
+  def create
+    @submission = Submission.new(params[:submission])
+
+    if @submission.save
+      if @submission.ham?
+        begin
+          SubmissionMailer.notification(@submission, request).deliver
+        rescue
+          logger.warn "There was an error delivering an submission notification.\n#{$!}\n"
+        end
+
+        begin
+          SubmissionMailer.confirmation(@submission, request).deliver
+        rescue
+          logger.warn "There was an error delivering an submission confirmation:\n#{$!}\n"
+        end if SubmissionSetting.send_confirmation?
+      end
+
+      redirect_to thank_you_submissions_url
+    else
+      render :action => 'new'
+    end
   end
 
 protected
-
-  def find_all_submissions
-    @submissions = Submission.order('position ASC')
-  end
 
   def find_page
     @page = Page.where(:link_url => "/submissions").first
   end
 
 end
+
+
+

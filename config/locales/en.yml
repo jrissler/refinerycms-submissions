@@ -1,25 +1,75 @@
 en:
-  shared:
-    admin:
-      image_picker:
-        image: image
   plugins:
-    submissions:
+    refinery_submissions:
       title: Submissions
+      description: Provides a contact form and stores submissions
+  submissions:
+    new:
+      send: Send message
+      privacy_policy: We value your privacy
   admin:
     submissions:
-      actions:
-        create_new: Add New Submission
-        reorder: Reorder Submissions
-        reorder_done: Done Reordering Submissions
-      records:
-        title: Submissions
-        sorry_no_results: Sorry! There are no results found.
-        no_items_yet: There are no Submissions yet. Click "Add New Submission" to add your first submission.
+      delete: Remove this submission forever
       submission:
-        view_live_html: View this submission live <br/><em>(opens in a new window)</em>
-        edit: Edit this submission
-        delete: Remove this submission forever
-  submissions:
-    show:
-      other: Other Submissions
+        read_submission: Read the submission
+        said: said
+        mark_as_spam: Mark as spam
+        mark_as_ham: Move to inbox
+      submenu:
+        inbox: Inbox
+        spam: Spam
+        update_notified: Update who gets notified
+        edit_confirmation_email: Edit confirmation email
+      index:
+        no_submissions: You have not received any submissions yet.
+        no_spam: Hooray! You don't have any spam.
+      show:
+        details: Details
+        age: Age
+        actions: Actions
+        back_to_all_submissions: Back to all Submissions
+        spam: Spam
+        spam_yes: 'yes'
+        submission: Submission
+        to: To
+        from: From
+        click_to_email: Click to email this address
+        phone: Phone
+        date: Date
+        message: Message
+    submission_settings:
+      notification_recipients_form:
+        submission_settings_value_name: Send notifications to
+        hint: When a new submission is submitted, Refinery will send an email notification to you.
+        example: "Enter your email address(es) like: jack@work.com, jill@office.com"
+      confirmation_email_form:
+        to: To
+        from: From
+        subject: Subject
+        click_to_edit_subject: Click here to edit the subject
+        explanation: Every time someone contacts you on your website, Refinery sends out an email to confirm the submission with the person who made it.
+        below_edit_email_sent: Below you can edit the email that is sent out.
+        the_customer_making_submission: The customer making the submission
+        message: Message
+        note: "Note: place the text %name% where you'd like the customer's name to appear in the email"
+  submission_mailer:
+    notification:
+      greeting: Hi there
+      you_recieved_new_submission: You just received a new submission on your website.
+      submission_starts: --- submission starts ---
+      submission_ends: --- submission ends ---
+      from: From
+      email: Email
+      phone: Phone
+      message: Message
+      closing_line: Kind Regards
+      ps: P.S. All your submissions are stored in the "Submissions" section of Refinery should you ever want to view it there later.
+  activerecord:
+    models:
+      submission: submission
+    attributes:
+      submission:
+        name: Name
+        email: Email
+        phone: Phone
+        message: Message

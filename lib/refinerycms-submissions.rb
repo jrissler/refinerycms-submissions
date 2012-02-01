@@ -1,28 +1,14 @@
-require 'refinerycms-base'
+require File.expand_path('../inquiries', __FILE__)
 
 module Refinery
   module Submissions
-
-    class << self
-      attr_accessor :root
-      def root
-        @root ||= Pathname.new(File.expand_path('../../', __FILE__))
-      end
-    end
-
     class Engine < Rails::Engine
-      initializer "static assets" do |app|
-        app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
-      end
-
       config.after_initialize do
         Refinery::Plugin.register do |plugin|
-          plugin.name = "submissions"
           plugin.pathname = root
-          plugin.activity = {
-            :class => Submission,
-            :title => 'first_name'
-          }
+          plugin.name = "refinery_submissions"
+          plugin.directory = "submissions"
+          plugin.menu_match = /(refinery|admin)\/submission(s|y_settings)$/
         end
       end
     end
