@@ -14,6 +14,12 @@ class Submission < ActiveRecord::Base
     include_spam ? limit(number) : ham.limit(number)
   end
   
+  def akismet_key
+    RefinerySetting.find_or_set(:akismet_key,
+      "Akismet Key"
+    )  
+  end
+  
   def confirmation_body
     RefinerySetting.find_or_set(:submission_confirmation_body,
       "Thank you for filling out our contact form %name%,\n\nThis email is a receipt to confirm we have received your information and we'll be in touch shortly.\n\nThanks."
