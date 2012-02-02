@@ -1,6 +1,6 @@
 class Submission < ActiveRecord::Base
 
-  validates :name, :presence => true
+  validates :first_name, :presence => true
   validates :message, :presence => true
   validates :email, :format=> { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
 
@@ -8,7 +8,7 @@ class Submission < ActiveRecord::Base
 
   default_scope :order => 'created_at DESC'
 
-  attr_accessible :name, :phone, :message, :email
+  attr_accessible :first_name, :last_name, :email, :phone, :message, :your_interest, :how_did_you_find_us, :method_of_contact
   
   before_create :check_for_spam
   
