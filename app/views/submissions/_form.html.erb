@@ -1,7 +1,7 @@
 <%= form_for Submission.new do |f| -%>
   <div class='field'>
     <%= f.label :first_name -%>
-    <%= f.text_field :first_name, :class => 'larger widest'  -%>
+    <%= f.text_field :first_name  -%>
   </div>
   
   <div class='field'>
@@ -38,5 +38,25 @@
     <%= f.label :method_of_contact -%>
     <%= f.text_field :method_of_contact  -%>
   </div>
+  
+  <div class='field'>
+    <%= f.label :user_ip -%>
+    <%= f.text_field :user_ip  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :user_agent -%>
+    <%= f.text_field :user_agent  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :referrer -%>
+    <%= f.text_field :referrer  -%>
+  </div>
+  
+  <div class='actions'>
+    <%= f.submit t('.send') %>
+  </div>
+  
 <% end -%>
 
