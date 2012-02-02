@@ -12,6 +12,10 @@ class Submission < ActiveRecord::Base
   
   before_create :check_for_spam
   
+  def name
+    [self.first_name, self.last_name].join(' ')
+  end
+  
   def request=(request)
     self.user_ip    = request.remote_ip
     self.user_agent = request.env['HTTP_USER_AGENT']
