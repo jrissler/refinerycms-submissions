@@ -11,23 +11,25 @@ class SubmissionsController < ApplicationController
 
   def create
     @submission = Submission.new(params[:submission])
-
+    @submission.request = request
+    
     if @submission.save
-      if @submission.ham?
+      if @submission.approved?
         begin
           SubmissionMailer.notification(@submission, request).deliver
         rescue
           logger.warn "There was an error delivering an submission notification.\n#{$!}\n"
         end
-
+        
         begin
           SubmissionMailer.confirmation(@submission, request).deliver
         rescue
           logger.warn "There was an error delivering an submission confirmation:\n#{$!}\n"
         end if Submission.send_confirmation?
+        
+        redirect_to thank_you_submissions_url
       end
-
-      redirect_to thank_you_submissions_url
+      redirect_to episode_path(@submission.episode_id)
     else
       render :action => 'new'
     end

@@ -6,7 +6,8 @@
 
 Include the latest [gem](http://rubygems.org/gems/refinerycms-submissions) into your Refinery CMS application's Gemfile:
 
-    gem 'refinerycms-submissions', '~> 1.0.0'
+    gem 'akismetor', :git => 'http://github.com/jrissler/akismetor'
+    gem 'refinerycms-submissions', '~> 1.0.0', :git => 'http://github.com/jrissler/refinerycms-submissions'
 
 Then type the following at command line inside your Refinery CMS application's root directory:
 

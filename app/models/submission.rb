@@ -9,15 +9,55 @@ class Submission < ActiveRecord::Base
   default_scope :order => 'created_at DESC'
 
   attr_accessible :name, :phone, :message, :email
+  
+  before_create :check_for_spam
+  
+  def request=(request)
+    self.user_ip    = request.remote_ip
+    self.user_agent = request.env['HTTP_USER_AGENT']
+    self.referrer   = request.env['HTTP_REFERER']
+  end
+
+  def check_for_spam
+    if !akismet_key == "Akismet Key" || !full_site_url == "http://example.com"
+      self.spam = !Akismetor.spam?(akismet_attributes)
+    end
+    true # return true so it doesn't stop save
+  end
+
+  def akismet_attributes
+    {
+      :key                  => akismet_key,
+      :blog                 => full_site_url,
+      :user_ip              => user_ip,
+      :user_agent           => user_agent,
+      :comment_author       => name,
+      :comment_author_email => email,
+      :comment_author_url   => site_url,
+      :comment_content      => content
+    }
+  end
+
+  def mark_as_spam!
+    update_attribute(:spam, false)
+    Akismetor.submit_spam(akismet_attributes)
+  end
+
+  def mark_as_ham!
+    update_attribute(:spam, true)
+    Akismetor.submit_ham(akismet_attributes)
+  end
 
   def self.latest(number = 7, include_spam = false)
     include_spam ? limit(number) : ham.limit(number)
   end
   
   def akismet_key
-    RefinerySetting.find_or_set(:akismet_key,
-      "Akismet Key"
-    )  
+    RefinerySetting.find_or_set(:akismet_key, "Akismet Key")  
+  end
+  
+  def full_site_url
+    RefinerySetting.find_or_set(:full_site_url, "http://example.com") 
   end
   
   def confirmation_body
