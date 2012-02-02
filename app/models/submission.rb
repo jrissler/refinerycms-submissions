@@ -98,7 +98,7 @@ class Submission < ActiveRecord::Base
                                 "New contact form submission from your website")
   end
 
-  def send_confirmation?
+  def self.send_confirmation?
     RefinerySetting.find_or_set(:submission_send_confirmation, true)
   end
 
