@@ -25,11 +25,9 @@ class SubmissionsController < ApplicationController
           SubmissionMailer.confirmation(@submission, request).deliver
         rescue
           logger.warn "There was an error delivering an submission confirmation:\n#{$!}\n"
-        end if Submission.send_confirmation?
-        
-        redirect_to thank_you_submissions_url
+        end if Submission.send_confirmation?        
       end
-      redirect_to episode_path(@submission.episode_id)
+      redirect_to thank_you_submissions_url
     else
       render :action => 'new'
     end
