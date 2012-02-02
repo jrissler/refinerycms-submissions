@@ -14,7 +14,7 @@ class SubmissionsController < ApplicationController
     @submission.request = request
     
     if @submission.save
-      if @submission.approved?
+      if !@submission.spam?
         begin
           SubmissionMailer.notification(@submission, request).deliver
         rescue
