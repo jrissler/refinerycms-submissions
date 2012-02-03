@@ -36,7 +36,7 @@ class SubmissionsController < ApplicationController
 protected
 
   def find_page
-    @page = Page.where(:link_url => "/submissions").first
+    @page = Page.find_by_link_url('/contact', :include => [:parts, :slugs])
   end
 
 end
