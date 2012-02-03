@@ -1,1 +1,7 @@
-<%= render :partial => "form" %>
+<% content_for :body_content_left do %>
+  <div class="inquiries">
+    <%=raw @page.content_for(Page.default_parts.first.to_sym) %>
+    <%= render :partial => "form" %>
+  </div>
+<% end %>
+<%= render :partial => '/shared/content_page' %>
