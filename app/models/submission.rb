@@ -93,8 +93,7 @@ class Submission < ActiveRecord::Base
   end
 
   def self.notification_recipients
-    RefinerySetting.find_or_set(:submission_notification_recipients,
-                                ((Role[:refinery].users.first.email rescue nil) if defined?(Role)).to_s)
+    RefinerySetting.find_or_set(:submission_notification_recipients, "james@jamesrissler.com")
   end
 
   def self.notification_subject
