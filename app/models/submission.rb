@@ -70,12 +70,12 @@ class Submission < ActiveRecord::Base
     )
   end
 
-  def self.confirmation_subject(locale='en')
+  def confirmation_subject(locale='en')
     RefinerySetting.find_or_set("submission_confirmation_subject_#{locale}".to_sym,
                                 "Thank you for contacting us.")
   end
 
-  def self.confirmation_subject=(value)
+  def confirmation_subject=(value)
     value.first.keys.each do |locale|
       RefinerySetting.set("submission_confirmation_subject_#{locale}".to_sym, value.first[locale.to_sym])
     end
@@ -92,11 +92,11 @@ class Submission < ActiveRecord::Base
     end
   end
 
-  def self.notification_recipients
+  def notification_recipients
     RefinerySetting.find_or_set(:submission_notification_recipients, "james@jamesrissler.com")
   end
 
-  def self.notification_subject
+  def notification_subject
     RefinerySetting.find_or_set(:submission_notification_subject,
                                 "New contact form submission from your website")
   end
