@@ -5,8 +5,13 @@
 ### Gem Installation using Bundler (The very best way)
 
 Include the latest [gem](http://rubygems.org/gems/refinerycms-submissions) into your Refinery CMS application's Gemfile:
-
+    Rails 2
     ./script/plugin install git://github.com/levycarneiro/akismetor
+    Rails3 (I need to convert to a gem!)
+    rails plugin install git://github.com/levycarneiro/akismetor
+    
+    
+    Both (add to Gemfile)
     gem 'refinerycms-submissions', '~> 1.2', :git => 'http://github.com/jrissler/refinerycms-submissions'
 
 Then type the following at command line inside your Refinery CMS application's root directory:
