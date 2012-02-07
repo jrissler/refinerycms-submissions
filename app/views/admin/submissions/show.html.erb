@@ -64,6 +64,18 @@
         </td>
       </tr>
     <% end %>
+    <% unless @submission.your_interest.blank? %>
+      <tr>
+        <td>
+          <strong>
+            Their interest
+          </strong>
+        </td>
+        <td>
+          <%= @submission.your_interest %>
+        </td>
+      </tr>
+    <% end %>
     <tr>
       <td>
         <strong><%= t('.date') %></strong>
@@ -74,15 +86,6 @@
     </tr>
     <% if !@submission.message.blank? %>
     <tr>
-      <td valign='top'>
-        <strong><%= t('.message') %></strong>
-      </td>
-      <td>
-        <%= simple_format @submission.message, :style => 'margin-top: 0' %>
-      </td>
-    </tr>
-    <% end %>
-    <% if !@submission.message.blank? %>
       <td valign='top'>
         <strong><%= t('.message') %></strong>
       </td>
