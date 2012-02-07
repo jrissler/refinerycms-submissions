@@ -1,0 +1,95 @@
+<div id='actions'>
+  <h2><%= t('.details')%></h2>
+  <p>
+    <strong><%= t('.age') %>:</strong> <%= time_ago_in_words(@submission.created_at) %>
+  </p>
+  <% if @submission.spam? %>
+    <p>
+      <strong><%= t('.spam') %>:</strong> <%= t('.spam_yes') %>
+    </p>
+  <% end %>
+  <h2><%= t('.actions') %></h2>
+  <ul>
+    <li>
+      <%= link_to t('.back_to_all_submissions'), {:action => 'index'}, :class => "back_icon" %>
+    </li>
+    <li>
+      <%= link_to t('admin.submissions.delete'),
+                  admin_submission_url(@submission),
+                  :class => 'delete_icon no-tooltip confirm-delete',
+                  :title => t('admin.submissions.delete'),
+                  :confirm => t('shared.admin.delete.message', :title => @submission.name),
+                  :method => :delete %>
+    </li>
+  </ul>
+</div>
+<div id='records'>
+  <h2><%= t('.submission') %></h2>
+  <table id='submission'>
+    <tr>
+      <td>
+        <strong><%= t('.to') %></strong>
+      </td>
+      <td>
+        <%= RefinerySetting[:site_name] %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('.from') %></strong>
+      </td>
+      <td>
+        <%= @submission.name %> [<%= mail_to @submission.email, @submission.email, {:title => t('.click_to_email')} %>]
+      </td>
+    </tr>
+    <% unless @submission.phone.blank? %>
+      <tr>
+        <td>
+          <strong><%= t('.phone') %></strong>
+        </td>
+        <td>
+          <%= @submission.phone %>
+        </td>
+      </tr>
+    <% end %>
+    <% unless @submission.how_did_you_find_us.blank? %>
+      <tr>
+        <td>
+          <strong>
+            How they found us
+          </strong>
+        </td>
+        <td>
+          <%= @submission.how_did_you_find_us %>
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>
+        <strong><%= t('.date') %></strong>
+      </td>
+      <td>
+        <%= l(Date.parse(@submission.created_at.to_s), :format => :long) %>
+      </td>
+    </tr>
+    <% if !@submission.message.blank? %>
+    <tr>
+      <td valign='top'>
+        <strong><%= t('.message') %></strong>
+      </td>
+      <td>
+        <%= simple_format @submission.message, :style => 'margin-top: 0' %>
+      </td>
+    </tr>
+    <% end %>
+    <% if !@submission.message.blank? %>
+      <td valign='top'>
+        <strong><%= t('.message') %></strong>
+      </td>
+      <td>
+        <%= simple_format @submission.message, :style => 'margin-top: 0' %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
