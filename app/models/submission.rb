@@ -37,8 +37,8 @@ class Submission < ActiveRecord::Base
       :user_agent           => user_agent,
       :comment_author       => name,
       :comment_author_email => email,
-      :comment_author_url   => site_url,
-      :comment_content      => content
+      :comment_author_url   => email.split('@')[1],
+      :comment_content      => message
     }
   end
 
