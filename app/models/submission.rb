@@ -7,8 +7,6 @@ class Submission < ActiveRecord::Base
   acts_as_indexed :fields => [:first_name, :last_name, :email, :phone, :message, :your_interest, :how_did_you_find_us, :method_of_contact, :user_ip, :user_agent, :referrer]
 
   default_scope :order => 'created_at DESC'
-
-  attr_accessible :first_name, :last_name, :email, :phone, :message, :your_interest, :how_did_you_find_us, :method_of_contact
   
   before_create :check_for_spam
   
@@ -43,12 +41,14 @@ class Submission < ActiveRecord::Base
   end
 
   def mark_as_spam!
-    update_attribute(:spam, false)
+    self.spam = true
+    self.save!
     Akismetor.submit_spam(akismet_attributes)
   end
 
   def mark_as_ham!
-    update_attribute(:spam, true)
+    self.spam = false
+    self.save!
     Akismetor.submit_ham(akismet_attributes)
   end
 
