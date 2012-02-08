@@ -21,9 +21,7 @@ class Submission < ActiveRecord::Base
   end
 
   def check_for_spam
-    if !akismet_key == "Akismet Key" || !full_site_url == "http://example.com"
-      self.spam = !Akismetor.spam?(akismet_attributes)
-    end
+    self.spam = !Akismetor.spam?(akismet_attributes)
     true # return true so it doesn't stop save
   end
 
