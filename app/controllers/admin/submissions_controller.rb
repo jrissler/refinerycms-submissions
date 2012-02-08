@@ -19,7 +19,11 @@ class Admin::SubmissionsController < Admin::BaseController
 
   def toggle_spam
     find_submission
-    @submission.toggle!(:spam)
+    if params[:mark_as] == "ham"
+      @submission.mark_as_ham!
+    else
+      @submission.mark_as_spam!
+    end  
 
     redirect_to :back
   end

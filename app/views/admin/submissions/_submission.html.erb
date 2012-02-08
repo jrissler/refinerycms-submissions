@@ -14,10 +14,10 @@
                 :title => t('.read_submission') -%>
 
     <% if submission.spam? %>
-      <%= link_to refinery_icon_tag('email.png'), toggle_spam_admin_submission_url(submission),
+      <%= link_to refinery_icon_tag('email.png'), toggle_spam_admin_submission_url(submission, :mark_as => "ham"),
                   :title => t('.mark_as_ham') -%>
     <% else %>
-      <%= link_to refinery_icon_tag('bin_closed.png'), toggle_spam_admin_submission_url(submission),
+      <%= link_to refinery_icon_tag('bin_closed.png'), toggle_spam_admin_submission_url(submission, :mark_as => "spam"),
                   :title => t('.mark_as_spam') -%>
     <% end %>
   </span>
