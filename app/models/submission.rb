@@ -80,6 +80,7 @@ class Submission < ActiveRecord::Base
   end
 
   def self.confirmation_message(locale='en')
+    self.confirmation_body
     RefinerySetting.find_or_set("submission_confirmation_message_#{locale}".to_sym,
                                 RefinerySetting[:submission_confirmation_body])
   end
